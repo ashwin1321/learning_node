@@ -5,15 +5,20 @@
 const express = require("express")
 const app = express()
 
-const logger = require('./app.js')
+// const logger = require('./app.js')
 
-app.use(express.json())            // 
 
-// app.use((req, res, next) => {
-//   console.log('Logging....')
-//   next();               // next garena bhane tala ko chalnai didaina, lastai xada xa yo next
-// })
-app.use(logger)
+// builtin middleware
+app.use(express.json())     // parses the body of the request. And if there's json obj it'll populate  "req.body" property       
+app.use(express.urlencoded({extended: true}))   //parses incoming requests.     // key value pair pathaune
+app.use(express.static('public'))         //serve static files
+
+
+app.use((req, res, next) => {
+  console.log('Logging....')
+  next();               // next garena bhane tala ko chalnai didaina, lastai xada xa yo next
+})
+// app.use(logger)
 
 app.use((req,res,next)=>{
   console.log('Authenticating......');
