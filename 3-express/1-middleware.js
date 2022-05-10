@@ -73,6 +73,7 @@ app.get('/',(req,res)=>{
 })
 app.get('/api/courses',(req,res)=>{
   res.send("This is none of your business");
+  
 })
 
 app.post('/admin',(req,res)=>{
