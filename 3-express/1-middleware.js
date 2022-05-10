@@ -65,9 +65,11 @@ app.use((req,res,next)=>{
   console.log('Authenticating......');
   next()
 })
- 
+
+// #########  ROUTING  ###########
 app.get('/',(req,res)=>{
-  res.send("This is the home page")
+  // res.send("This is the home page")
+  res.render('index.pug',{title: "My Express App", message:"hello"});       // using pug
 })
 app.get('/api/courses',(req,res)=>{
   res.send("This is none of your business");
