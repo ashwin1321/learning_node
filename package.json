@@ -1,7 +1,12 @@
 {
   "dependencies": {
+    "config": "^3.3.7",
+    "debug": "^4.3.4",
     "express": "^4.18.1",
+    "helmet": "^5.0.2",
     "joi": "^17.6.0",
-    "nodemon": "^2.0.16"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "pug": "^3.0.2"
   }
 }
