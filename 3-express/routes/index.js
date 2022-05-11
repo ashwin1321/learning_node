@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const logger=require("./logger");
-const config=require('config');
+const config=require('../config');
 const startupDebugger=require('debug')('app:startup'); //namepace : app:startup
 const dbDebugger=require('debug')('app:db')
 
