@@ -1,5 +1,4 @@
 
-const { func } = require('joi');
 const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost/playground') 
@@ -24,6 +23,7 @@ async function createCourse(){
         name: "react course",
         author: "Ashwin",
         tags: ['react','frontend'],
+        // date: Date.now,
         isPublished: true 
     })
       
@@ -34,33 +34,26 @@ async function createCourse(){
 
 
 async function getCourses(){
+
     const pageNumber = 2;
     const pageSize = 10
+    
+    // =========  regular expression  ============
+    
+    // .find({author: /^Ashwin/})     //  starts with Ashwin
+    // .find({author: /Ashwin$/})    //   Ends with
+    // .find({author: /.*Ashwin.*/}) // contains substring
+
 
     const courses = await Course
         .find({author: 'Ashwin'})
         .limit(pageSize)
-        // .skip((pageNumber-1)*pageSize)
+        .skip((pageNumber-1)*pageSize)
         .sort({name: 1})             
         .select({name: 1, tags: 1})
+        // .count();           // counts the number of documents that matches this criteria
 
     console.log(courses);
 }
-
-async function updateCourse(id){
-    const result = await Course.findByIdAndUpdate({_id: id}, {
-        $set: {
-            author: "hency",
-            isPublished: true
-        }
-    },{new:true})
-    console.log(result);
-}
-
-async function removeCourse(id){
-    const result = await Course.deleteOne({_id:id})
-    console.log(result);
-}
-
-removeCourse('627cc9cc2bc32a95c5ee3c03')
- 
+// createCourse()
+getCourses()
