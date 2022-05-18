@@ -9,16 +9,16 @@ router.get('/', async (req,res)=>{
 })
 
 router.post('/', async (req,res)=>{
-    const {error} = customer.validateCustomer(req.body);
+    const {error} = validateCustomer(req.body);
     if (error) return res.status(400).send(error.details[0].message )
     
     let customer = new Customer( {
         name: req.body.name,
-        phone: req.params.phone,
-        isGold: req.params.isGold
+        phone: req.body.phone,
+        isGold: req.body.isGold
     })
-    await customer.save()
-    res.send(customer)
+    const result = await customer.save()
+    res.send(result)
 })
 
 router.put('/:id', async (req,res)=>{
