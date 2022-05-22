@@ -20,7 +20,6 @@ router.post("/",async(req,res)=>{
     if(error){
         return res.status(400).send(error.details[0].message);
     }
-
     const movie=await Movie.findById(req.body.movieId);
     if(!movie){
         return res.status(400).send("Moivie Not Found!!!");

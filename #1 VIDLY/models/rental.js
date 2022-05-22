@@ -59,7 +59,7 @@ function validateRental(rental){
     });
     
     return schema.validate(rental);
-}
+} 
 
 // module.exports.Rental=Rental;
 // module.exports.validateRental=validateRental;
