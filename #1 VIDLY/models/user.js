@@ -32,7 +32,7 @@ function validateUser(user){
     const schema =Joi.object( {
         name: Joi.string().min(5).max(50).required(),
         email: Joi.string().min(12).max(85).email().required(),
-        password: Joi.string().min(8).max(1024).required()
+        password: Joi.string().min(8).max(1024).required()                // for complex password  == joi password complexity google g
     }) 
     return schema.validate(user)
 }
