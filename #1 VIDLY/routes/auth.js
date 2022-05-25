@@ -27,7 +27,7 @@ router.post('/', async (req,res)=>{
 function validate(req){
     const schema =Joi.object( {
         email: Joi.string().min(12).max(85).email().required(),
-        password: Joi.string().min(8).max(1024).required()                // for complex password  == joi password complexity google g
+        password: Joi.string().min(8).max(1024).required()                // for complex password  == joi password complexity google  g
     }) 
     return schema.validate(req)
 }
